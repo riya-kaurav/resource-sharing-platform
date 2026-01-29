@@ -1,41 +1,49 @@
-import mongoose from "mongoose";
-import Upvote from "../models/Upvote.model.js";
-import Resource from "../models/Resource.model.js";
+import Upvote from "../models/upvote.model.js";
+import Resource from "../models/resource.model.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
+/**
+ * Upvote resource
+ */
 export const upvoteResource = asyncHandler(async (req, res) => {
-  const { resourceId } = req.params; // taking resourceId from URL params
-  const userId = req.user.id; // assuming userId is available in req.user after authentication middleware
+  const { resourceId } = req.params;
 
-  const session = await mongoose.startSession();  // start a mongoose session
-  session.startTransaction();  // start a transaction
+  const upvote = await Upvote.create({
+    userId: req.user._id,
+    resourceId
+  });
 
-  try {
-    const upvote = await Upvote.create(
-      [{ userId, resourceId }],
-      { session }
-    );                          // create an upvote document
+  await Resource.findByIdAndUpdate(resourceId, {
+    $inc: { upvoteCount: 1 }
+  });
 
-    await Resource.findByIdAndUpdate(
-      resourceId,
-      { $inc: { upvoteCount: 1 } },  // increment upvoteCount by 1
-      { session }
-    );                                // increment the upvoteCount in Resource document
+  return res.status(201).json(
+    new ApiResponse(201, upvote, "Resource upvoted")
+  );
+});
 
-    await session.commitTransaction();
-    session.endSession();                    // commit the transaction and end the session
+/**
+ * Remove upvote
+ */
+export const removeUpvote = asyncHandler(async (req, res) => {
+  const { resourceId } = req.params;
 
-    res.json(new ApiResponse(200, null, "Resource upvoted"));
-  } catch (error) {
-    await session.abortTransaction();
-    session.endSession();                // abort the transaction and end the session
+  const upvote = await Upvote.findOneAndDelete({
+    userId: req.user._id,
+    resourceId
+  });
 
-    if (error.code === 11000) {
-      throw new ApiError(400, "You have already upvoted this resource");
-    }
-
-    throw error;
+  if (!upvote) {
+    throw new ApiError(404, "Upvote not found");
   }
+
+  await Resource.findByIdAndUpdate(resourceId, {
+    $inc: { upvoteCount: -1 }
+  });
+
+  return res.status(200).json(
+    new ApiResponse(200, {}, "Upvote removed")
+  );
 });
