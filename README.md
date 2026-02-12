@@ -1,4 +1,4 @@
-# 🎓 Student Resource Sharing Platform
+#  Student Resource Sharing Platform
 
 A full-stack MERN application where students can upload, discover, and manage academic resources like notes, PDFs, and links.
 
@@ -6,7 +6,7 @@ This project is built to *solidify MERN stack fundamentals* with real-world back
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 *Frontend*
 - React
@@ -21,7 +21,7 @@ This project is built to *solidify MERN stack fundamentals* with real-world back
 
 ---
 
-## ✨ Core Features
+##  Core Features
 
 - User Authentication (JWT based)
 - Upload academic resources
