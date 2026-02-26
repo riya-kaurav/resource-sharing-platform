@@ -5,7 +5,6 @@ import {
   getResourceById,
   deleteResource
 } from "../controllers/resource.controller.js";
-import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
@@ -14,14 +13,13 @@ const router = Router();
 router.get("/", getResources);
 router.get("/:id", getResourceById);
 
-// protected
+// routes
 router.post(
   "/",
-  verifyJWT,
   upload.single("pdf"),
   uploadResource
 );
 
-router.delete("/:id", verifyJWT, deleteResource);
+router.delete("/:id", deleteResource);
 
 export default router;

@@ -3,12 +3,10 @@ import {
   upvoteResource,
   removeUpvote
 } from "../controllers/upvote.controller.js";
-import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-// protected
-router.post("/:resourceId", verifyJWT, upvoteResource);
-router.delete("/:resourceId", verifyJWT, removeUpvote);
+router.post("/:resourceId", upvoteResource);
+router.delete("/:resourceId", removeUpvote);
 
 export default router;
