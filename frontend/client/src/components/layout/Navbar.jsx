@@ -11,9 +11,15 @@ export default function Navbar() {
         </h2>
       </div>
 
-      <button className="text-sm text-slate-600 hover:text-indigo-600 transition">
-        Logout
-      </button>
+      <button
+  onClick={() => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  }}
+  className="text-sm text-slate-600 hover:text-black"
+>
+  Logout
+</button>
     </header>
   );
 }
