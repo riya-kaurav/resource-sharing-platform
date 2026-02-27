@@ -1,8 +1,36 @@
-#  Student Resource Sharing Platform
+#  ResourceBox
 
-A full-stack MERN application where students can upload, discover, and manage academic resources like notes, PDFs, and links.
+ResourceBox is a full-stack, production-oriented web application designed to enable authenticated users to upload, discover,
+search, and upvote high-value educational resources.
 
-This project is built to *solidify MERN stack fundamentals* with real-world backend and frontend patterns.
+## Why This Project Exists
+
+*Most resource-sharing apps are either:*
+
+- UI-heavy but backend-weak
+- CRUD-only demos
+- Lack scalable search & data modeling
+  
+*ResourceBox was intentionally built to demonstrate:*
+
+- Real-world authentication architecture
+- Search optimization using MongoDB indexing
+- Cloud-based file storage handling
+- Clean API-layer separation
+- Production-grade frontend-backend integration
+
+---
+## System Architecture
+
+Client (React + Tailwind)
+        ↓
+Axios (JWT Interceptor)
+        ↓
+Express REST API
+        ↓
+MongoDB (Indexed Queries)
+        ↓
+Cloudinary (PDF Storage)
 
 ---
 
@@ -11,13 +39,16 @@ This project is built to *solidify MERN stack fundamentals* with real-world back
 *Frontend*
 - React
 - Axios
-- Tailwind CSS (optional)
+- Tailwind CSS
+- React router
 
 *Backend*
 - Node.js
 - Express.js
 - MongoDB + Mongoose
 - JWT Authentication
+- Multer
+- Cloudinary
 
 ---
 
@@ -29,3 +60,12 @@ This project is built to *solidify MERN stack fundamentals* with real-world back
 - Like resources
 - Role-based protected APIs
 - Clean, scalable folder structure
+
+
+---
+
+## About the Developer
+
+I build systems with attention to architecture, scalability, and clean design — not just features.
+
+If you're interested in collaboration or discussing engineering decisions behind this project, feel free to connect.
