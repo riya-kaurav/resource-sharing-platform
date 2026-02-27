@@ -22,25 +22,17 @@ search, and upvote high-value educational resources.
 ---
 ## System Architecture
 
-┌─────────────────────────────┐
-│  Client (React + Tailwind)  │
-└───────────────┬─────────────┘
+```text
+[ Client (React + Tailwind) ]
                 ↓
-┌─────────────────────────────┐
-│   Axios (JWT Interceptor)   │
-└───────────────┬─────────────┘
+[ Axios (JWT Interceptor) ]
                 ↓
-┌─────────────────────────────┐
-│      Express REST API       │
-└───────────────┬─────────────┘
+[ Express REST API ]
                 ↓
-┌─────────────────────────────┐
-│   MongoDB (Indexed Queries) │
-└───────────────┬─────────────┘
+[ MongoDB (Indexed Queries) ]
                 ↓
-┌─────────────────────────────┐
-│   Cloudinary (PDF Storage)  │
-└─────────────────────────────┘
+[ Cloudinary (PDF Storage) ]
+```
 
 ---
 
