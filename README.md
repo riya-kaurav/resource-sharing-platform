@@ -22,15 +22,25 @@ search, and upvote high-value educational resources.
 ---
 ## System Architecture
 
-Client (React + Tailwind)
-        ↓
-Axios (JWT Interceptor)
-        ↓
-Express REST API
-        ↓
-MongoDB (Indexed Queries)
-        ↓
-Cloudinary (PDF Storage)
+┌─────────────────────────────┐
+│  Client (React + Tailwind)  │
+└───────────────┬─────────────┘
+                ↓
+┌─────────────────────────────┐
+│   Axios (JWT Interceptor)   │
+└───────────────┬─────────────┘
+                ↓
+┌─────────────────────────────┐
+│      Express REST API       │
+└───────────────┬─────────────┘
+                ↓
+┌─────────────────────────────┐
+│   MongoDB (Indexed Queries) │
+└───────────────┬─────────────┘
+                ↓
+┌─────────────────────────────┐
+│   Cloudinary (PDF Storage)  │
+└─────────────────────────────┘
 
 ---
 
