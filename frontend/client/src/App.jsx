@@ -3,7 +3,8 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Upload from "./pages/Upload";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+// import ProtectedRoute from "./components/auth/ProtectedRoute";
+import "./app.css";
 
 export default function App() {
   return (
@@ -16,18 +17,18 @@ export default function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Dashboard />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
 
         <Route
           path="/upload"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Upload />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
 

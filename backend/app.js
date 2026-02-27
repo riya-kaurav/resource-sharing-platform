@@ -15,9 +15,17 @@ const app = express();
 // Global Middlewares
 
 // CORS
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN || "*",
+//     credentials: true
+//   })
+// );
+
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "*",
+    origin: "http://localhost:5173", // your frontend
     credentials: true
   })
 );

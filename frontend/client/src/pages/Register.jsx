@@ -5,7 +5,7 @@ import AuthLayout from "../components/layout/AuthLayout";
 
 export default function Register() {
 
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +16,7 @@ export default function Register() {
 
     try {
       const res = await axios.post("/auth/register", {
-        name,
+        username,
         email,
         password
       });
@@ -39,13 +39,13 @@ export default function Register() {
 
         <div>
           <label className="block text-sm font-medium mb-2">
-            Name
+            Username
           </label>
           <input
             type="text"
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
           />
         </div>

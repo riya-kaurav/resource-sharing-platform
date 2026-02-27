@@ -21,7 +21,7 @@ export default function Dashboard() {
     try {
       setLoading(true);
 
-      const res = await axios.get(`/resource?search=${query}`);
+      const res = await axios.get(`/resources?search=${query}`);
 
       setResources(res.data.data);
 
