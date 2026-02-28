@@ -14,7 +14,7 @@ export const uploadResource = asyncHandler(async (req, res) => {
     throw new ApiError(400, "PDF file required");
   }
 
-  const cloudinaryResult = await uploadOnCloudinary(req.file.path);
+  const cloudinaryResult = await uploadOnCloudinary(req.file.buffer);
 
   const resource = await Resource.create({
     title,
@@ -56,7 +56,7 @@ export const getResources = asyncHandler(async (req, res) => {
  */
 export const getResourceById = asyncHandler(async (req, res) => {
   const resource = await Resource.findById(req.params.id)
-    .populate("uploadedBy", "name");
+    .populate("uploadedBy", "username email");
 
   if (!resource) {
     throw new ApiError(404, "Resource not found");

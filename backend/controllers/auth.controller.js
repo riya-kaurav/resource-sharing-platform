@@ -37,7 +37,7 @@ export const login = async (req, res) => {
     if (!isValid) return res.status(401).json({ message: "Invalid credentials" });
 
     // Generate tokens
-    const accessToken = user.methodsAccessToken();
+    const accessToken = user.generateAccessToken();
     const refreshToken = user.generateRefreshToken();
 
     // Save refresh token in DB
@@ -46,8 +46,7 @@ export const login = async (req, res) => {
 
     res.status(200).json({
       message: "Login successful",
-      accessToken,
-      refreshToken,
+      data: {accessToken, refreshToken}
     });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error: error.message });
@@ -89,7 +88,7 @@ export const refreshAccessToken = async (req, res) => {
       }
 
       // Generate new access token
-      const newAccessToken = user.methodsAccessToken();
+      const newAccessToken = user.generateAccessToken();
 
       res.status(200).json({ accessToken: newAccessToken });
     });

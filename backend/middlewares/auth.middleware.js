@@ -1,20 +1,38 @@
-import multer from "multer";
+import jwt from "jsonwebtoken";
+import { User } from "../models/user.models.js";
 
-// store file in memory (BEST for cloudinary)
-const storage = multer.memoryStorage();
+export const verifyJWT = async (req, res, next) => {
+  try {
+    const token =
+      req.cookies?.accessToken ||
+      req.header("Authorization")?.replace("Bearer ", "");
 
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype !== "application/pdf") {
-    cb(new Error("Only PDF files are allowed"), false);
-  } else {
-    cb(null, true);
+    if (!token) {
+      return res.status(401).json({
+        message: "Unauthorized request - No token provided",
+      });
+    }
+
+    const decodedToken = jwt.verify(
+      token,
+      process.env.ACCESS_TOKEN_SECRET
+    );
+
+    const user = await User.findById(decodedToken._id).select(
+      "-password -refreshTokens"
+    );
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid access token",
+      });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      message: "Invalid or expired token",
+    });
   }
 };
-
-export const upload = multer({
-  storage,
-  fileFilter,
-  limits: {
-    fileSize: 10 * 1024 * 1024, // 10MB
-  },
-});
