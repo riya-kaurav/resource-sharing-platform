@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { font-family: 'Nunito', sans-serif; }
+
+body {
+  background: #fdf4ff;
+  background-image:
+    radial-gradient(at 20% 10%, #fce7f3 0px, transparent 50%),
+    radial-gradient(at 80% 0%, #ede9fe 0px, transparent 50%),
+    radial-gradient(at 0% 50%, #dbeafe 0px, transparent 50%),
+    radial-gradient(at 90% 80%, #d1fae5 0px, transparent 50%);
+  min-height: 100vh;
+}
+
+.genz-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(196,181,253,0.15);
+  transition: all 0.25s ease;
+}
+.genz-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(196,181,253,0.28);
+}
+
+.genz-btn {
+  background: linear-gradient(135deg, #c4b5fd, #f9a8d4);
+  color: white;
+  font-weight: 800;
+  border-radius: 14px;
+  padding: 11px 24px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(196,181,253,0.45);
+  width: 100%;
+}
+.genz-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,181,253,0.55); }
+.genz-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.genz-input {
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid #e9d5ff;
+  border-radius: 12px;
+  padding: 11px 16px;
+  width: 100%;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.genz-input:focus { border-color: #c4b5fd; box-shadow: 0 0 0 3px rgba(196,181,253,0.2); background: white; }
+
+.tag-pill {
+  background: linear-gradient(135deg, #ede9fe, #fce7f3);
+  color: #7c3aed;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd6fe;
+}
+
+.type-notes     { background: #fce7f3; color: #be185d; }
+.type-pyqs      { background: #ede9fe; color: #6d28d9; }
+.type-coding    { background: #dbeafe; color: #1d4ed8; }
+.type-interview { background: #d1fae5; color: #065f46; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease forwards; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-6px); }
+}
+.float { animation: float 3s ease-in-out infinite; }

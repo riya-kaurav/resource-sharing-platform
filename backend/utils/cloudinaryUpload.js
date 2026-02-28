@@ -4,7 +4,8 @@ export const uploadOnCloudinary = async (buffer) => {
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload_stream(
       {
-        resource_type: "raw", 
+        resource_type: "image", 
+        format: "pdf",
         folder: "resources",
       },
       (error, result) => {
