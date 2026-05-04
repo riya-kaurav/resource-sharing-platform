@@ -68,6 +68,6 @@ search, and upvote high-value educational resources.
 
 ## About the Developer
 
-I build systems with attention to architecture, scalability, and clean design — not just features.
+I build systems with attention to architecture, scalability, and clean design not just features.
 
 If you're interested in collaboration or discussing engineering decisions behind this project, feel free to connect.
