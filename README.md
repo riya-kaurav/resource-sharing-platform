@@ -47,7 +47,7 @@ search, and upvote high-value educational resources.
 *Backend*
 - Node.js
 - Express.js
-- MongoDB + Mongoose
+- MongoDB 
 - JWT Authentication
 - Multer
 - Cloudinary
